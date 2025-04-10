@@ -44,14 +44,26 @@
       { name: "Google", lat: 37.4220, lon: -122.0841 },
       { name: "Meta", lat: 37.4848, lon: -122.1484 },
       { name: "Tesla", lat: 37.3947, lon: -122.1503 },
-      { name: "Cisco", lat: 37.4081, lon: -121.9607 }
+      { name: "Cisco", lat: 37.4081, lon: -121.9607 },
+      { name: "Nvidia", lat: 37.3874, lon: -121.9442 },
+      { name: "Intel", lat: 37.3876, lon: -121.9636 },
+      { name: "AMD", lat: 37.4038, lon: -122.0312 },
+      { name: "Applied Materials", lat: 37.3874, lon: -121.9442 },
+      { name: "Xilinx", lat: 37.3770, lon: -121.9250 }
     ];
 
     // Camera Feed
     const video = document.getElementById("cameraFeed");
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => video.srcObject = stream)
-      .catch(err => console.error("Camera access error:", err));
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "environment" } // Use "environment" for rear camera
+    })
+    .then(stream => {
+      const videoElement = document.getElementById("cameraFeed"); // Ensure this matches your HTML element ID
+      videoElement.srcObject = stream;
+    })
+    .catch(err => console.error("Camera access error:", err));    navigator.mediaDevices.getUserMedia({ video: true })
+          .then(stream => video.srcObject = stream)
+          .catch(err => console.error("Camera access error:", err));
 
     // Overlay for Labels
     const overlay = document.getElementById("overlay");
