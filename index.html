@@ -54,17 +54,16 @@
 
     // Camera Feed
     const video = document.getElementById("cameraFeed");
-    navigator.mediaDevices.getUserMedia({
+        navigator.mediaDevices.getUserMedia({
       video: { facingMode: "environment" } // Use "environment" for rear camera
     })
     .then(stream => {
       const videoElement = document.getElementById("cameraFeed"); // Ensure this matches your HTML element ID
       videoElement.srcObject = stream;
     })
-    .catch(err => console.error("Camera access error:", err));    navigator.mediaDevices.getUserMedia({ video: true })
-          .then(stream => video.srcObject = stream)
-          .catch(err => console.error("Camera access error:", err));
+    .catch(err => console.error("Camera access error:", err));
 
+    
     // Overlay for Labels
     const overlay = document.getElementById("overlay");
 
